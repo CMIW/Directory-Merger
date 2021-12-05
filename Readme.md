@@ -25,10 +25,10 @@ This will create a folder named "merged" in the output directory with the merged
 
 Linux example:
 ```
-./dir_merger -dir0=/home/user/Downloads/wild_encounters -dir1=/home/user/Downloads/No_Trade_Evolutions -output=/home/user/Downloads 
+./dir_merger -dir0=/home/user/Downloads/wild_encounters -dir1=/home/user/Downloads/No_Trade_Evolutions -output=/home/user/Downloads
 ```
 
 Windows example:
 ```
-dir_merger.exe -dir0=C:\Users\user\Downloads\wild_encounters -dir1=C:\Users\user\Downloads\No_Trade_Evolutions -output=C:\Users\user\Downloads
+dir_merger.exe -dir0=C:\Users\user\Downloads\wild_encounters -dir1=C:\Users\user\Downloads\No_Trade_Evolutions -output=C:\Users\user\Downloads 
 ```
