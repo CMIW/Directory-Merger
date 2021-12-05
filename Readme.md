@@ -25,7 +25,7 @@ This will create a folder named "merged" in the output directory with the merged
 
 Linux example:
 ```
-./dir_merger -dir0=/home/user/Downloads/wild_encounters -dir1=/home/user/Downloads/No_Trade_Evolutions -output=/home/user/Downloads
+./dir_merger -dir0=/home/user/Downloads/wild_encounters -dir1=/home/user/Downloads/No_Trade_Evolutions -output=/home/user/Downloads 
 ```
 
 Windows example:
