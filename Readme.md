@@ -16,10 +16,7 @@ It won't merge files with the same name, it only merges the differences between 
 
 ## Using Directory Merger
 
-Open a terminal where you have the binaries and run the following command:
-```
-dir_merger -dir0=<folder path> -dir1=<folder path> -output=<path>
-```
+Open a terminal where you have the binaries and run the following command:``` dir_merger -dir0=<folder path> -dir1=<folder path> -output=<path> ```
 
 This will create a folder named "merged" in the output directory with the merged files from the input folders.
 
