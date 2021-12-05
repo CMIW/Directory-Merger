@@ -9,19 +9,14 @@ This is a simple command line tool, build with Rust, to merge the contents of di
 
 It won't merge files with the same name, it only merges the differences between directories. It takes as arguments the directories of the folders you want to merge and the directory of where the merged folder should be.
 
-## Installing Directory Merger
-
-* Download the binaries for your system from the latest release https://github.com/CMIW/Directory-Merger/releases.
-* Extract the binaries from the zip file.
-
 ## Using Directory Merger
 
-Open a terminal where you have the binaries and run the following command:
+No installation is required. Download the binaries for your system from the latest release https://github.com/CMIW/Directory-Merger/releases. Extract the binaries from the zip file. Open a terminal where you have the binaries and run the following command:
 ```
 dir_merger -dir0=<folder path> -dir1=<folder path> -output=<path>
 ```
 
-This will create a folder named "merged" in the output directory with the merged files from the input folders.
+This will create a folder named "merged" in the output directory with the files from the input folders.
 
 Linux example:
 ```
@@ -31,4 +26,28 @@ Linux example:
 Windows example:
 ```
 dir_merger.exe -dir0=C:\Users\user\Downloads\wild_encounters -dir1=C:\Users\user\Downloads\No_Trade_Evolutions -output=C:\Users\user\Downloads
+```
+## Building Directory Merger
+
+Follow the Rust installation guide from https://doc.rust-lang.org/book/ch01-01-installation.html.
+
+Clone the project repo:
+
+HTTPS:
+```
+https://github.com/CMIW/Directory-Merger.git
+```
+
+SSH:
+```
+git@github.com:CMIW/Directory-Merger.git
+```
+
+GitHub CLI:
+```
+gh repo clone CMIW/Directory-Merger
+```
+Open a terminal, move to the project folder and run:
+```
+cargo build
 ```
