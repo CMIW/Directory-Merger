@@ -5,7 +5,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/CMIW/Directory-Merger?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/CMIW/Directory-Merger?style=social)
 
-This is a simple command line tool, build with Rust, to merge the contents of distinct folders. It was made for learning and educational purpose.
+This is a simple command line tool, build with Rust, to merge the contents of distinct folders. It was made for learning and educational purpose. It's trash but it's trash I'm proud of.
 
 It won't merge files with the same name, it only merges the differences between directories. It takes as arguments the directories of the folders you want to merge and the directory of where the merged folder should be.
 
