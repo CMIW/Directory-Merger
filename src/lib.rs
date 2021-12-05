@@ -82,7 +82,7 @@ pub fn valid_dir(commands: &Commands) -> Result<(), String>{
 // If they don't exist in each folder tree merge them and put it on output.
 // It's like making an outer join of dir0 and dir1 to output.
 // If they do exist in each folder tree then <I'm fucked>
-pub fn merge(commands: &Commands) -> Result<&str, Box<dyn Error>>{
+pub fn merge(commands: &Commands) -> Result<(), Box<dyn Error>>{
     // Creates an iterator with every leaf of the directory tree
     let dir0 = WalkDir::new(&commands.dir0).into_iter().filter_map(|e| e.ok());
     let dir1 = WalkDir::new(&commands.dir1).into_iter().filter_map(|e| e.ok());
@@ -96,6 +96,7 @@ pub fn merge(commands: &Commands) -> Result<&str, Box<dyn Error>>{
     // To do: remove duplicated code in both for loops
     for entry in dir0{
         if entry.path().is_file(){
+            // Separate the input folder dir from the file dir
             let file = entry.path().to_str().unwrap().replace(&commands.dir0,"");
             let file_dir = (&commands.dir0, file.clone());
             if !outer_join_files.contains(&file_dir){
@@ -114,6 +115,8 @@ pub fn merge(commands: &Commands) -> Result<&str, Box<dyn Error>>{
             else{
                 inner_join_files.push((&commands.dir0, &commands.dir1, file));
                 let index = outer_join_files.iter().position(|x| *x == file_dir).unwrap();
+                let file_rm = outer_join_files.get(index);
+                println!("{:?}", &file_rm);
                 outer_join_files.remove(index);
             }
         }
@@ -124,7 +127,6 @@ pub fn merge(commands: &Commands) -> Result<&str, Box<dyn Error>>{
 
     // For every file in the outer join create the parent dir in output if it doesn't exist then
     // copy the file to the new directory.
-    // To do: don't copy files that already are on the output dir.
     for file in outer_join_files.iter(){
         // Origin of the file
         let from = format!("{}{}",file.0,file.1);
@@ -153,13 +155,13 @@ pub fn merge(commands: &Commands) -> Result<&str, Box<dyn Error>>{
     // because they are in both folders
     if inner_join_files.len() > 0 {
         println!(
-            "\nThe following files can't be merged, because the tool doesn't know which files to keep."
+            "\nThe following files can't be merged, the tool doesn't know which files to keep:"
         );
 
         for file in inner_join_files.iter() {
-            println!("{}{}\n{}{}", &file.0, &file.2, &file.1, &file.2);
+            println!("'{}{}'\n'{}{}'", &file.0, &file.2, &file.1, &file.2);
         }
     }
 
-    Ok("\nDone! Merge completed without errors.")
+    Ok(())
 }

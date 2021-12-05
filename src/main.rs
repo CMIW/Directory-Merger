@@ -54,8 +54,11 @@ fn main() {
     });
 
     // Merge the folder trees
-    dir_merger::merge(&commands).unwrap_or_else(|err| {
-        eprintln!("Merge error: {}", err);
-        process::exit(1);
-    });
+    match dir_merger::merge(&commands){
+        Ok(()) => println!("\nMerge completed without errors!"),
+        Err(err) => {
+            eprintln!("Merge error: {}", err);
+            process::exit(1);
+        }
+    }
 }
