@@ -35,7 +35,7 @@ this will ever work.😂
 use std::env;
 use std::process;
 
-use dir_merger::Commands;
+use dir_merger::commands::Commands;
 
 fn main() {
     // read any command line arguments passed to it and then collect the values into a vector
