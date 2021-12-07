@@ -35,21 +35,19 @@ this will ever work.😂
 use std::env;
 use std::process;
 
-use dir_merger::commands::Commands;
-
 fn main() {
     // read any command line arguments passed to it and then collect the values into a vector
     let args: Vec<String> = env::args().collect();
 
     // Parse the commands from the passed command line arguments
-    let commands = Commands::new(&args).unwrap_or_else(|err| {
-        eprintln!("Problem parsing arguments: {}", err);
+    let commands = dir_merger::Commands::new(&args).unwrap_or_else(|err| {
+        eprintln!("\nProblem parsing arguments: {}", err);
         process::exit(1);
     });
 
     // validate that al given directories exist
     dir_merger::valid_dir(&commands).unwrap_or_else(|err| {
-        eprintln!("Validation error: {}", err);
+        eprintln!("\nProblem validating the directories: \n{}", err);
         process::exit(1);
     });
 
@@ -57,7 +55,7 @@ fn main() {
     match dir_merger::merge(&commands){
         Ok(()) => println!("\nMerge completed without errors!"),
         Err(err) => {
-            eprintln!("Merge error: {}", err);
+            eprintln!("\nMerge error: {}", err);
             process::exit(1);
         }
     }
