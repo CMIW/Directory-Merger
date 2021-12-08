@@ -40,12 +40,12 @@ impl Commands {
 
             // match the inputs to the Commands struct
             match &*splitted_arg[0] {
-                "dir0"     => commands.dir0 = splitted_arg[1].clone(),
-                "dir1"     => commands.dir1 = splitted_arg[1].clone(),
-                "output"   => commands.output = splitted_arg[1].clone(),
-                "-dir0"     => commands.dir0 = splitted_arg[1].clone(),
-                "-dir1"     => commands.dir1 = splitted_arg[1].clone(),
-                "-output"   => commands.output = splitted_arg[1].clone(),
+                "dir0"      => commands.dir0    = splitted_arg[1].clone(),
+                "dir1"      => commands.dir1    = splitted_arg[1].clone(),
+                "output"    => commands.output  = splitted_arg[1].clone(),
+                "-dir0"     => commands.dir0    = splitted_arg[1].clone(),
+                "-dir1"     => commands.dir1    = splitted_arg[1].clone(),
+                "-output"   => commands.output  = splitted_arg[1].clone(),
                 _           => return Err(Error::UnknownArgument(splitted_arg[0].clone())),
             }
         }

@@ -32,10 +32,10 @@ impl fmt::Display for Error {
 impl error::Error for Error {
     fn source(&self) -> Option<&(dyn error::Error + 'static)> {
         match &*self {
-            Error::MissingArguments => None,
-            Error::MissingDirectory(_) => None,
-            Error::UnknownArgument(_) => None,
-            Error::Io(_) => None,
+            Error::MissingArguments     => None,
+            Error::MissingDirectory(_)  => None,
+            Error::UnknownArgument(_)   => None,
+            Error::Io(_)                => None,
         }
     }
 }
