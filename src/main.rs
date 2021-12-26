@@ -45,7 +45,7 @@ fn main() {
         process::exit(1);
     });
 
-    // validate that al given directories exist
+    // validate that all given directories exist
     dir_merger::valid_dir(&commands).unwrap_or_else(|err| {
         eprintln!("\nProblem validating the directories: \n{}", err);
         process::exit(1);

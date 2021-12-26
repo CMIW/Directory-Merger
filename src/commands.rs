@@ -5,16 +5,18 @@ use crate::error::Error;
 pub struct Commands {
     pub dir0: String,           // path of the dir we want to search
     pub dir1: String,           // path of the dir we want to search
-    pub output: String          // path of the output dir were new mod is located
+    pub output: String,         // path of the output dir were new mod is located
+    pub original: String        // path of the original dir without ant changes
 }
 
 // Default structure for Commands so we can initialize an "Empty" Commands struct
 impl Default for Commands{
     fn default () -> Commands {
         Commands{
-            dir0:   String::from("./"),
-            dir1:   String::from("./"),
-            output: String::from("./")
+            dir0:       String::from("./"),
+            dir1:       String::from("./"),
+            output:     String::from("./"),
+            original:   String::from("./")
         }
     }
 }
@@ -40,12 +42,14 @@ impl Commands {
 
             // match the inputs to the Commands struct
             match &*splitted_arg[0] {
-                "dir0"      => commands.dir0    = splitted_arg[1].clone(),
-                "dir1"      => commands.dir1    = splitted_arg[1].clone(),
-                "output"    => commands.output  = splitted_arg[1].clone(),
-                "-dir0"     => commands.dir0    = splitted_arg[1].clone(),
-                "-dir1"     => commands.dir1    = splitted_arg[1].clone(),
-                "-output"   => commands.output  = splitted_arg[1].clone(),
+                "dir0"      => commands.dir0        = splitted_arg[1].clone(),
+                "dir1"      => commands.dir1        = splitted_arg[1].clone(),
+                "output"    => commands.output      = splitted_arg[1].clone(),
+                "original"  => commands.original    = splitted_arg[1].clone(),
+                "-dir0"     => commands.dir0        = splitted_arg[1].clone(),
+                "-dir1"     => commands.dir1        = splitted_arg[1].clone(),
+                "-output"   => commands.output      = splitted_arg[1].clone(),
+                "-original" => commands.original    = splitted_arg[1].clone(),
                 _           => return Err(Error::UnknownArgument(splitted_arg[0].clone())),
             }
         }
