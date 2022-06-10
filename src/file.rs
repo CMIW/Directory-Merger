@@ -7,13 +7,13 @@ pub struct File {
 
 impl File {
     // File constructor
-    pub fn new(dir0:String, dir1:String, file:String) -> File {
+    pub fn new(dir0:&str, dir1:&str, file:&str) -> File {
 
-        File {dir0: dir0, dir1: dir1, file: file}
+        File {dir0: dir0.to_string(), dir1: dir1.to_string(), file: file.to_string()}
     }
 }
 
-// Implement the "==" so the struct can be compared 
+// Implement the "==" so the struct can be compared
 impl PartialEq for File {
     fn eq(&self, other: &Self) -> bool {
         self.file == other.file

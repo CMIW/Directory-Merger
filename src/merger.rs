@@ -23,12 +23,12 @@ pub fn valid_dir(commands: &Commands) -> Result<(), Error>{
 }
 
 //
-pub fn merge_aux(outer_files: &mut Vec<File>, inner_files: &mut Vec<File>, entry: &DirEntry, dir: &String){
+pub fn merge_aux(outer_files: &mut Vec<File>, inner_files: &mut Vec<File>, entry: &DirEntry, dir: &str){
     if entry.path().is_file(){
         // Separate the input folder dir from the file dir
         let file_dir = entry.path().to_str().unwrap().replace(dir,"");
         // Build file struct
-        let mut file = File::new(dir.to_owned(), "".to_owned(), file_dir);
+        let mut file = File::new(dir, "", &file_dir);
         if outer_files.contains(&file){
             // get the index of the file
             let index = outer_files.iter().position(|x| *x == file).unwrap();
